@@ -17,14 +17,10 @@ The goal of this project is to leverage technology to create a secure platform t
 
 # Tech Stack
 
-Backend: Django (Python), Django REST Framework
-Frontend: HTML, CSS, JavaScript, Bootstrap
-Database: SQLite, PostgreSql
-APIs & Services:
-REST APIs
-Google Maps API (for location tracking)
-Twilio API (for SMS & WhatsApp)
-SMTP (for email alerts)
+1. Backend: Django (Python), Django REST Framework
+2. Frontend: HTML, CSS, JavaScript, Bootstrap
+3. Database: SQLite, PostgreSql
+4. APIs & Services:REST APIs, Google Maps API (for location tracking), Twilio API (for SMS & WhatsApp), SMTP (for email alerts)
 
 # Deployment: Render 
 # Project Live link
