@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerHeaven – Women Safety Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <style>
+    :root {
+      --clr-primary:#6a0dad;
+      --clr-primary-light:#8f35ff;
+      --clr-accent:#e0c3fc;
+      --bg-light:#faf8ff;
+      --text-dark:#222;
+      --radius:1rem;
+      --shadow:0 6px 16px rgba(0,0,0,0.1);
+      --transition:0.3s ease;
+      --max-width:1100px;
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    h1,h2,h3 { color: var(--clr-primary); font-weight: 600 }
+    a { text-decoration: none; color: inherit }
+    img { max-width: 100%; display: block }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .btn {
+      background: var(--clr-primary);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      display: inline-block;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    .btn:hover {
+      background: var(--clr-primary-light);
+      transform: translateY(-2px);
+    }
+
+    header {
+      background: var(--clr-primary);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .nav__links {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 500;
+      flex-wrap: wrap;
+    }
+    .nav__links a {
+      color: #fff;
+      transition: var(--transition);
+    }
+    .nav__links a:hover {
+      color: var(--clr-accent);
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+    .features {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .feature-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .feature-box:hover {
+      transform: translateY(-6px);
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .stat {
+      background: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex: 1 1 150px;
+    }
+    .stat strong {
+      font-size: 1.8rem;
+      color: var(--clr-primary);
+    }
+
+    details {
+      background: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+    summary {
+      font-weight: 600;
+      color: var(--clr-primary);
+      list-style: none;
+    }
+
+    .testimonials {
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-track {
+      display: flex;
+      transition: var(--transition);
+      gap: 2rem;
+    }
+    .testimonial {
+      flex: 0 0 100%;
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .t-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--clr-primary);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .t-prev { left: 10px }
+    .t-next { right: 10px }
+
+    .contact-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      margin-top: .5rem;
+      padding: .8rem;
+      border-radius: .5rem;
+      border: 1px solid #ccc;
+    }
+    .contact-form label { margin-top: 1rem; display: block }
+
+    footer {
+      background: var(--clr-primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    .social-links {
+      margin-top: .5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links a:hover {
+      color: var(--clr-accent);
+    }
+  .slideshow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.slideshow .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideshow .slide.active {
+  opacity: 1;
+}
+.alert-box {
+  background: #ffffff;       
+  color: #000000;   
+  justify-content: space-between;  
+  display: flex;    
+   
+}
+
+.alert-box .close-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000;              
+  cursor: pointer;
+  margin-left: auto;       
+}
+
+.alert-box .close-btn:hover {
+  color: red;               
+}
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">HerHeaven</div><br>
+      <nav>
+        <ul class="nav__links" type="none">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#tips">Safety Tips</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+    {% if messages %}
+  {% for message in messages %}
+    <div class="alert-box">
+      <span>{{ message }}</span>
+      <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+    
+  </header>
+
+
+
+  <section id="home" class="hero section" style="position:relative; height:65vh; color:#fff; text-align:center; overflow:hidden;">
+    
+      <!-- Background slideshow -->
+  <div class="slideshow">
+    <img src="https://i.pinimg.com/736x/d5/3e/fe/d53efebdb3403a8d040b59ed933da31b.jpg" alt="Women Safety 1" class="slide active">
+    <img src="https://i.pinimg.com/736x/1e/02/ba/1e02ba574a8edb12977011d5667ce595.jpg" alt="Women Safety 2" class="slide">
+    <img src="https://i.pinimg.com/736x/4f/3f/dd/4f3fddcda6207a5c7f15fce414aff2ae.jpg" alt="Women Safety 3" class="slide">
+  </div>
+  <div class="container" style="position:relative; z-index:2;">
+      <h1>Welcome to HerHeaven</h1>
+      <p>Your trusted companion for real-time safety alerts, location sharing and self-defence resources—built by women, for women.</p>
+      <a href="#features" class="btn">Explore Features</a>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2rem;">Core Features</h2>
+      <div class="grid features">
+        <a href="sos">
+        <div class="feature-box">
+          <h3><i class="fa-solid fa-bell"></i> SOS Alert</h3>
+          <p>Tap once to notify trusted contacts &amp; police with live location.</p>
+        </div></a>
+        <a href="live">
+        <div class="feature-box">
+          <h3><i class="fa-solid fa-map-location-dot"></i> Live Tracking</h3>
+          <p>Real-time GPS sharing with end-to-end encryption.</p>
+        </div></a>
+        <a href="selfdefence">
+        <div class="feature-box">
+          <h3><i class="fa-solid fa-hand-fist"></i> Self-Defence Library</h3>
+          <p>Videos &amp; articles curated by certified trainers.</p>
+        </div></a>
+        <!--div class="feature-box">
+          <h3><i class="fa-solid fa-shield-heart"></i> Safe Zones</h3>
+          <p>Community-rated locations to plan safer commutes.</p>
+        </div-->
+      </div>
+    </div>
+  </section>
+
+  <!--section class="section" style="background:var(--clr-accent)">
+    <div class="container stats">
+      <div class="stat"><strong>50K+</strong><div>Active Users</div></div>
+      <div class="stat"><strong>2M+</strong><div>SOS Alerts Handled</div></div>
+      <div class="stat"><strong>98%</strong><div>Positive Feedback</div></div>
+    </div>
+  </section-->
+
+  <section id="tips" class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:2rem;">Quick Safety Tips</h2>
+      <details><summary>Plan Your Route in Advance</summary><p> • Before heading out, check maps and identify the safest and well-lit routes.<br>
+    • Avoid shortcuts through isolated areas, especially late at night.<br>
+    • Share your estimated time of arrival (ETA) with a trusted friend or family member.<br>
+    • Keep your phone charged and ensure location services are enabled.<br>
+    • If possible, plan backup routes in case of unexpected detours.<br>
+    • Stay updated on traffic, weather, or local safety alerts.<br>
+    • Let someone know once you safely reach your destination.</p></details>
+      <details><summary>Trust Your Instincts</summary><p>
+    • Pay attention to your gut feelings—if something feels wrong, it usually is.<br>
+    • Do not hesitate to change your path or step into a safer, crowded space.<br>
+    • If a stranger makes you uncomfortable, create distance immediately.<br>
+    • Trust your inner voice over social pressure or politeness.<br>
+    • Call a friend, emergency contact, or helpline if you feel uneasy.<br>
+    • Remember, prioritizing your safety is always more important than being polite.<br>
+    • Never ignore small warning signs, as they can prevent bigger risks.
+  </p></details>
+      <details><summary>Carry Essentials</summary><p>
+    • Keep a fully charged power bank to ensure your phone stays usable.<br>
+    • Carry a safety whistle to alert others in case of danger.<br>
+    • Save emergency contacts on speed dial for quick access.<br>
+    • Keep some cash, ID proof, and small medical essentials handy.<br>
+    • A small flashlight or keychain light can be very useful at night.<br>
+    • Install safety apps like HERHEAVEN that can send your live location instantly.<br>
+    • Make sure your bag is light enough to carry comfortably if you need to move fast.
+  </p></details>
+    </div>
+  </section>
+
+  <!--section class="section testimonials">
+    <div class="container">
+      <button class="t-nav t-prev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="t-nav t-next"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial">
+          <i class="fa-solid fa-quote-left"></i>
+          <p>“HerHeaven’s SOS saved me when my cab broke down at night. My friends and the local helpline reached me within minutes.”</p>
+          <strong>— Ayesha K.</strong>
+        </div>
+        <div class="testimonial">
+          <i class="fa-solid fa-quote-left"></i>
+          <p>“The self‑defence tutorials boosted my confidence. Highly recommend this app to every woman.”</p>
+          <strong>— Priya M.</strong>
+        </div>
+      </div>
+    </div>
+  </section-->
+
+  <section id="contact" class="section">
+    <div class="container contact-form">
+      <h2 style="text-align:center;margin-bottom:1.5rem">Get in Touch</h2>
+      <form id="contactForm" method="post" action="/">
+        {% csrf_token %}
+        <label for="name" >Name *</label>
+        <input type="text"  name="name" required>
+        <label for="email" >Email *</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message *</label>
+        <textarea id="message"  name="message" required></textarea>
+        <button class="btn" type="submit" style="margin-top:1.5rem">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+
+
+  <footer>
+    <div>&copy; 2025 HerHeaven. All rights reserved.</div>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("testimonialTrack");
+  const next = document.querySelector(".t-next");
+  const prev = document.querySelector(".t-prev");
+  let index = 0;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+  if (next && prev && track) {
+    next.onclick = () => { index = (index + 1) % track.children.length; updateCarousel(); };
+    prev.onclick = () => { index = (index <= 0) ? track.children.length - 1 : index - 1; updateCarousel(); };
+  }
+
+  // 🔥 slideshow
+  const slides = document.querySelectorAll(".slideshow .slide");
+  let currentSlide = 0;
+
+  if (slides.length > 0) {
+    setInterval(() => {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 3000);
+  }
+});
+</script>
+
+ 
+
+
+</body>
+</html>
