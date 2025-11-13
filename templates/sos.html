@@ -244,7 +244,7 @@ body {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           function (position) {
-            fetch("/send_alert/", {
+            fetch("https://herheaven-women-safety-web-application.onrender.com/send_alert/", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
